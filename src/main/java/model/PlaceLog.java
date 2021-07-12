@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class PlaceLog {
@@ -12,6 +13,7 @@ public class PlaceLog {
   private LocalTime startTime;
   private LocalTime endTime;
   private Date date;
+  private Long timeSpent;
 
   public PlaceLog() {
   }
@@ -26,6 +28,9 @@ public class PlaceLog {
     this.startTime = startTime;
     this.endTime = endTime;
     this.date = date;
+    if (startTime != null && endTime != null) {
+      this.timeSpent = computeTimeSpent();
+    }
   }
 
   public PlaceLog(Integer placeId, String placeName, Double longitude, Double latitude,
@@ -37,6 +42,23 @@ public class PlaceLog {
     this.startTime = startTime;
     this.endTime = endTime;
     this.date = date;
+    if (startTime != null && endTime != null) {
+      this.timeSpent = computeTimeSpent();
+    }
+  }
+
+  public PlaceLog(Long id, Integer placeId, String placeName, Double longitude,
+      Double latitude, LocalTime startTime, LocalTime endTime, Date date,
+      Long timeSpent) {
+    this.id = id;
+    this.placeId = placeId;
+    this.placeName = placeName;
+    this.longitude = longitude;
+    this.latitude = latitude;
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.date = date;
+    this.timeSpent = timeSpent;
   }
 
   public Long getId() {
@@ -101,5 +123,29 @@ public class PlaceLog {
 
   public void setDate(Date date) {
     this.date = date;
+  }
+
+  private Long computeTimeSpent() {
+    Long timeSpent = startTime.until(endTime, ChronoUnit.SECONDS);
+    return timeSpent >= 0 ? timeSpent : timeSpent + 24 * 60 * 60;
+  }
+
+  public Long getTimeSpent() {
+    return nonNullableTime(timeSpent);
+  }
+
+  public void setTimeSpent(Long timeSpent) {
+    this.timeSpent = timeSpent;
+  }
+
+  public void addTimeSpent(Long timeSpent) {
+    setTimeSpent(getTimeSpent() + timeSpent);
+  }
+
+  private Long nonNullableTime(Long time) {
+    if (time == null) {
+      return 0L;
+    }
+    return time;
   }
 }

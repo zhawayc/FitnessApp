@@ -24,8 +24,6 @@ public class DailyEventDao {
     return dailyEventDao;
   }
 
-
-
   public Integer createDailyEvent(DailyEvent dailyEvent) {
     Connection conn = null;
     PreparedStatement preparedStatement = null;

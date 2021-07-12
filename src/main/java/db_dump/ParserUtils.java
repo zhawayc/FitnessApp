@@ -58,7 +58,7 @@ public class ParserUtils {
   public static WalkingActivity getWalkingActivityFromJson(JsonObject placeActivity, Long placeId) {
     WalkingActivity walkingActivity = new WalkingActivity();
     walkingActivity.setPlaceLogId(placeId);
-    walkingActivity.setDistance(placeActivity.get("duration").getAsDouble());
+    walkingActivity.setDuration(placeActivity.get("duration").getAsDouble());
     walkingActivity.setDistance(placeActivity.get("distance").getAsDouble());
     walkingActivity.setCalorie(placeActivity.get("calories").getAsInt());
     walkingActivity.setStep(placeActivity.get("steps").getAsInt());

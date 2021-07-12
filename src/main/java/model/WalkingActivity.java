@@ -11,6 +11,13 @@ public class WalkingActivity {
   public WalkingActivity() {
   }
 
+  public WalkingActivity(Double duration, Double distance, Integer step, Integer calorie) {
+    this.duration = duration;
+    this.distance = distance;
+    this.step = step;
+    this.calorie = calorie;
+  }
+
   public WalkingActivity(Long id, Long placeLogId, Double duration, Double distance,
       Integer step, Integer calorie) {
     this.id = id;
@@ -47,7 +54,7 @@ public class WalkingActivity {
   }
 
   public Double getDuration() {
-    return duration;
+    return nonNullableDouble(duration);
   }
 
   public void setDuration(Double duration) {
@@ -55,7 +62,7 @@ public class WalkingActivity {
   }
 
   public Double getDistance() {
-    return distance;
+    return nonNullableDouble(distance);
   }
 
   public void setDistance(Double distance) {
@@ -63,7 +70,7 @@ public class WalkingActivity {
   }
 
   public Integer getStep() {
-    return step;
+    return nonNullableInteger(step);
   }
 
   public void setStep(Integer step) {
@@ -71,10 +78,34 @@ public class WalkingActivity {
   }
 
   public Integer getCalorie() {
-    return calorie;
+    return nonNullableInteger(calorie);
   }
 
   public void setCalorie(Integer calorie) {
     this.calorie = calorie;
+  }
+
+  private Double nonNullableDouble(Double num) {
+    return num == null ? 0.0 : num;
+  }
+
+  private Integer nonNullableInteger(Integer num) {
+    return num == null ? 0 : num;
+  }
+
+  public void addDuration(Double duration) {
+    setDuration(getDuration() + duration);
+  }
+
+  public void addDistance(Double distance) {
+    setDistance(getDistance() + distance);
+  }
+
+  public void addStep(Integer step) {
+    setStep(getStep() + step);
+  }
+
+  public void addCalorie(Integer calorie) {
+    setCalorie(getCalorie() + calorie);
   }
 }
