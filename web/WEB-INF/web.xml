@@ -29,4 +29,13 @@
     <servlet-name>WalkingActivityServlet</servlet-name>
     <url-pattern>/walkingActivity/*</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DailyEventServlet</servlet-name>
+    <servlet-class>api.DailyEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DailyEventServlet</servlet-name>
+    <url-pattern>/dailyEvents/*</url-pattern>
+  </servlet-mapping>
 </web-app>

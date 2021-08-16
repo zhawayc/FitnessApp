@@ -33,6 +33,14 @@ public class DailyEvent {
     this.duration = duration;
   }
 
+  public DailyEvent(String activity, Integer step, Integer calorie, Double distance, Double duration) {
+    this.step = step;
+    this.activity = activity;
+    this.calorie = calorie;
+    this.distance = distance;
+    this.duration = duration;
+  }
+
   public Long getId() {
     return id;
   }

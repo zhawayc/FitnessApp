@@ -10,7 +10,7 @@ public class DBCPDataSource {
   private static final String PORT = "3306";
   private static final String DATABASE = "FitnessApp";
   private static final String USERNAME = "root";
-  private static final String PASSWORD = "";
+  private static final String PASSWORD = "614a7159509";
 
   static {
     dataSource = new HikariDataSource();
